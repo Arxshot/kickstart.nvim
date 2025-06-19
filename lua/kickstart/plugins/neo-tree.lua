@@ -15,6 +15,11 @@ return {
   },
   opts = {
     filesystem = {
+      filtered_items = {
+        visible = false, -- Show all files, including hidden
+        hide_dotfiles = false, -- Do not hide dotfiles (e.g., .env, .gitignore)
+        hide_gitignored = false, -- Optional: show gitignored files too
+      },
       window = {
         mappings = {
           ['\\'] = 'close_window',
