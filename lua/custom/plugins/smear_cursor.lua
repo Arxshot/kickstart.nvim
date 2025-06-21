@@ -12,8 +12,16 @@ return {
       function()
         require('smear_cursor').toggle()
         if require('smear_cursor').enabled == false then
+          require('smear_cursor.color').unhide_real_cursor()
           vim.opt.guicursor = ''
-          -- os.execute 'tput cnorm'
+          os.execute 'tput cnorm'
+        else
+          if type(vim.o.guicursor) == 'string' then
+            if vim.o.guicursor ~= '' then
+              vim.o.guicursor = vim.o.guicursor .. ','
+            end
+            vim.o.guicursor = vim.o.guicursor .. 'a:SmearCursorHideable'
+          end
         end
       end,
       desc = '[T]oggle Smear [C]ursor',
@@ -26,8 +34,8 @@ return {
     min_vertical_distance_smear = 2,
 
     -- When to switch between rasterization methods
-    max_slope_horizontal = 0.6666,
-    min_slope_vertical = 1.3333,
+    max_slope_horizontal = 0.5,
+    min_slope_vertical = 2,
 
     -- Smear cursor when switching buffers or windows.
     smear_between_buffers = true,
