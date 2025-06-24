@@ -12,9 +12,9 @@ return {
       function()
         require('smear_cursor').toggle()
         if require('smear_cursor').enabled == false then
-          require('smear_cursor.color').unhide_real_cursor()
-          vim.opt.guicursor = ''
-          os.execute 'tput cnorm'
+          if type(vim.o.guicursor) == 'string' then
+            vim.o.guicursor = vim.o.guicursor:gsub(',?a:SmearCursorHideable', ''):gsub('^,', ''):gsub(',,+', ','):gsub(',$', '')
+          end
         else
           if type(vim.o.guicursor) == 'string' then
             if vim.o.guicursor ~= '' then
