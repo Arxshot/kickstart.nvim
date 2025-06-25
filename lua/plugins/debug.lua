@@ -151,7 +151,7 @@ M.config = function()
   }
 
   local Hydra = require 'hydra'
-  M.debugger_hydra = Hydra {}
+  -- M.debugger_hydra = Hydra {}
 end
 
 return M
