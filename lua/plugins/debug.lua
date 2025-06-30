@@ -8,6 +8,7 @@
 local M = {
   -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
+  lazy = false,
   -- NOTE: And you can specify dependencies as well
   dependencies = {
     -- Creates a beautiful debugger UI
@@ -25,59 +26,6 @@ local M = {
 
     -- Hydra
     'nvimtools/hydra.nvim',
-  },
-  keys = {
-    -- Basic debugging keymaps, feel free to change to your liking!
-    {
-      '<F5>',
-      function()
-        require('dap').continue()
-      end,
-      desc = 'Debug: Start/Continue',
-    },
-    {
-      '<F1>',
-      function()
-        require('dap').step_into()
-      end,
-      desc = 'Debug: Step Into',
-    },
-    {
-      '<F2>',
-      function()
-        require('dap').step_over()
-      end,
-      desc = 'Debug: Step Over',
-    },
-    {
-      '<F3>',
-      function()
-        require('dap').step_out()
-      end,
-      desc = 'Debug: Step Out',
-    },
-    {
-      '<leader>b',
-      function()
-        require('dap').toggle_breakpoint()
-      end,
-      desc = 'Debug: Toggle Breakpoint',
-    },
-    {
-      '<leader>B',
-      function()
-        require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-      end,
-      desc = 'Debug: Set Breakpoint',
-    },
-    -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-    {
-      '<F7>',
-      function()
-        require('dapui').toggle()
-      end,
-      desc = 'Debug: See last session result.',
-    },
   },
 }
 
@@ -114,11 +62,11 @@ M.config = function()
       icons = {
         pause = '⏸',
         play = '▶',
-        step_into = '⏎',
-        step_over = '⏭',
-        step_out = '⏮',
-        step_back = 'b',
-        run_last = '▶▶',
+        step_into = '',
+        step_over = '',
+        step_out = '',
+        step_back = '',
+        run_last = '',
         terminate = '⏹',
         disconnect = '⏏',
       },
@@ -151,7 +99,103 @@ M.config = function()
   }
 
   local Hydra = require 'hydra'
-  -- M.debugger_hydra = Hydra {}
+  M.debugger_hydra = Hydra {
+    name = 'Debugging',
+    mode = 'n',
+    body = '<leader>d', -- You can set a different key to activate the hydra if you want
+    config = {
+      color = 'amaranth',
+      invoke_on_body = true,
+      hint = { position = 'bottom' },
+    },
+    heads = {
+      -- Stepping
+      {
+        'H',
+        function()
+          require('dap').reverse_continue()
+        end,
+        { desc = 'Reverse Continue' },
+      },
+      {
+        'h',
+        function()
+          require('dap').step_back()
+        end,
+        { desc = 'Step Back' },
+      },
+      {
+        'j',
+        function()
+          require('dap').step_into()
+        end,
+        { desc = 'Step Into' },
+      },
+      {
+        'k',
+        function()
+          require('dap').step_out()
+        end,
+        { desc = 'Step Out' },
+      },
+      {
+        'l',
+        function()
+          require('dap').step_over()
+        end,
+        { desc = 'Step Over' },
+      },
+      {
+        'L',
+        function()
+          require('dap').continue()
+        end,
+        { desc = 'Start/Continue' },
+      },
+      -- other
+      {
+        'a',
+        function()
+          require('dap').attach()
+        end,
+        { desc = 'Attach' },
+      },
+      {
+        'p',
+        function()
+          require('dap').pause()
+          require('dap').attach()
+        end,
+        { desc = 'Pause' },
+      },
+      {
+        'b',
+        function()
+          require('dap').toggle_breakpoint()
+        end,
+        { desc = 'Toggle Breakpoint' },
+      },
+      {
+        'B',
+        function()
+          require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+        end,
+        { desc = 'Set Breakpoint' },
+      },
+      { '<esc>', nil, { exit = true, desc = 'Exit Hydra' } },
+      { 'q', nil, { exit = true, desc = 'Exit Hydra' } },
+    },
+    hint = [[
+ Debugging:
+ [F5] Start/Continue
+ [F1] Step Into
+ [F2] Step Over
+ [F3] Step Out
+ [leader]b Toggle Breakpoint
+ [leader]B Set Breakpoint
+ [esc] Exit
+  ]],
+  }
 end
 
 return M

@@ -19,12 +19,12 @@ return { -- Add indentation guides even on blank lines
     -- create the highlight groups in the highlight setup hook, so they are reset
     -- every time the colorscheme changes
     hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-      vim.api.nvim_set_hl(0, 'RainbowRed', { fg = palette.red })
-      vim.api.nvim_set_hl(0, 'RainbowGreen', { fg = palette.green })
-      vim.api.nvim_set_hl(0, 'RainbowYellow', { fg = palette.yellow })
-      vim.api.nvim_set_hl(0, 'RainbowBlue', { fg = palette.blue })
-      vim.api.nvim_set_hl(0, 'RainbowMagenta', { fg = palette.magenta })
-      vim.api.nvim_set_hl(0, 'RainbowCyan', { fg = palette.cyan })
+      vim.api.nvim_set_hl(0, 'RainbowRed', { fg = '#a26a6a' })
+      vim.api.nvim_set_hl(0, 'RainbowGreen', { fg = '#6a8a6a' })
+      vim.api.nvim_set_hl(0, 'RainbowYellow', { fg = '#9c9c6a' })
+      vim.api.nvim_set_hl(0, 'RainbowBlue', { fg = '#6a7a8a' })
+      vim.api.nvim_set_hl(0, 'RainbowMagenta', { fg = '#8a6a8a' })
+      vim.api.nvim_set_hl(0, 'RainbowCyan', { fg = '#6a8a8a' })
     end)
 
     require('ibl').setup { indent = { highlight = highlight } }
