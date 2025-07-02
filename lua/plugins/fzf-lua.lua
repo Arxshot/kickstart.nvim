@@ -5,6 +5,7 @@ return {
   -- or if using mini.icons/mini.nvim
   -- dependencies = { "echasnovski/mini.icons" },
   lazy = false,
+  cmd = { 'FzfLua' },
   keys = {
     -- [[find]]
     -- [[git]]

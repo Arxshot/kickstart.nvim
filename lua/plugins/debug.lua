@@ -29,6 +29,17 @@ local M = {
   },
 }
 
+M.keys = {
+  {
+    '<leader>d',
+    function()
+      M.debugger_hydra:activate()
+    end,
+    mode = { 'n' },
+    desc = '[D]ebugger',
+  },
+}
+
 M.config = function()
   local dap = require 'dap'
   local dapui = require 'dapui'
@@ -101,8 +112,8 @@ M.config = function()
   local Hydra = require 'hydra'
   M.debugger_hydra = Hydra {
     name = 'Debugging',
-    mode = 'n',
-    body = '<leader>d', -- You can set a different key to activate the hydra if you want
+    -- mode = 'n',
+    -- body = '<leader>d', -- You can set a different key to activate the hydra if you want
     config = {
       color = 'amaranth',
       invoke_on_body = true,

@@ -20,7 +20,7 @@ return {
         ['K'] = 'move_change_prev',
         ['<cr>'] = 'action_enter',
         ['p'] = 'enter_diffbuf',
-        ['<esc>'] = 'exit',
+        ['<esc>'] = 'quit',
       },
     }
   end,
