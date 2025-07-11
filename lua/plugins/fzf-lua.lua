@@ -9,7 +9,7 @@ return {
   keys = {
     -- [[find]]
     -- [[git]]
-    { '<leader>gb', '<cmd>FzfLua git_status<CR>', desc = '[G]it [B]lame' },
+    { '<leader>gb', '<cmd>FzfLua git_blame<CR>', desc = '[G]it [B]lame' },
     { '<leader>gc', '<cmd>FzfLua git_commits<CR>', desc = '[G]it [C]ommits' },
     { '<leader>gf', '<cmd>FzfLua git_files<CR>', desc = '[G]it [F]iles' },
     { '<leader>gs', '<cmd>FzfLua git_status<CR>', desc = '[G]it [S]tatus' },
@@ -17,7 +17,7 @@ return {
     { '<leader>s"', '<cmd>FzfLua registers<cr>', desc = '[S]earch [R]egisters' },
     { '<leader>sa', '<cmd>FzfLua autocmds<cr>', desc = '[S]earch [A]uto Commands' },
     { '<leader>sb', '<cmd>FzfLua lgrep_curbuf<cr>', desc = '[S]earch [B]uffer' },
-    { '<leader>sB', '<cmd>FzfLua builtin<cr>', desc = '[S]earch [B]uffer' },
+    { '<leader>sB', '<cmd>FzfLua builtin<cr>', desc = '[S]earch [B]uiltin' },
     { '<leader>sc', '<cmd>FzfLua command_history<cr>', desc = '[S]earch [C]ommand History' },
     { '<leader>sC', '<cmd>FzfLua commands<cr>', desc = '[S]earch [C]ommands' },
     -- { '<leader>sd', '<cmd>FzfLua diagnostics_document<cr>', desc = '[S]earch Document [D]iagnostics' },

@@ -37,6 +37,12 @@ function M.speak(opts, callback)
       return false
     end
 
+    if (start_pos[1] > end_pos[1]) or (start_pos[1] == end_pos[1] and start_pos[2] < end_pos[2]) then
+      local temp = end_pos
+      end_pos = start_pos
+      start_pos = temp
+    end
+
     local lines = vim.api.nvim_buf_get_lines(opts.bufnr, start_pos[1], end_pos[1] + 1, false)
     if #lines == 0 then
       callback 'No lines in selected range'
