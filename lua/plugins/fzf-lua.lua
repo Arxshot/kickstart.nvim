@@ -36,17 +36,6 @@ return {
     { '<leader>sv', '<cmd>FzfLua grep_visual<cr>', desc = '[S]earch [V]isual' },
     { '<leader>sz', '<cmd>FzfLua zoxide<cr>', desc = '[S]earch [Z]oxide' },
     -- [[jump]]
-    -- [[lsp]]
-    -- { '<leader>la', '<cmd>FzfLua lsp_code_actions<cr>', desc = '[L]SP Code [A]ctions' },
-    -- { '<leader>ld', '<cmd>FzfLua lsp_definitions<cr>', desc = '[L]SP [D]efinitions' },
-    -- { '<leader>lD', '<cmd>FzfLua lsp_declarations<cr>', desc = '[L]SP [D]eclarations' },
-    -- { '<leader>li', '<cmd>FzfLua lsp_incoming_calls<cr>', desc = '[L]SP [I]ncoming Calls' },
-    -- { '<leader>lI', '<cmd>FzfLua lsp_implementations<cr>', desc = '[L]SP [I]mplementations' },
-    -- { '<leader>lo', '<cmd>FzfLua lsp_outgoing_calls<cr>', desc = '[L]SP [O]utgoning Calls' },
-    -- --{ '<leader>lsd', '<cmd>FzfLua lsp_document_symbols<cr>', desc = '[L]SP Document Symbols' },
-    -- { '<leader>lw', '<cmd>FzfLua lsp_live_workspace_symbols<cr>', desc = '[L]SP [W]orkspace Symbols' },
-    -- { '<leader>lt', '<cmd>FzfLua lsp_typedefs<cr>', desc = '[L]SP [T]ypeDefs' },
-    -- { '<leader>lr', '<cmd>FzfLua lsp_references<cr>', desc = '[L]SP [R]eferences' },
   },
   config = function()
     require('fzf-lua').setup {

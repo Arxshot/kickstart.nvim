@@ -110,6 +110,8 @@ vim.o.mouse = 'a'
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
 
+vim.o.colorcolumn = '80'
+
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
@@ -492,22 +494,22 @@ require('lazy').setup({
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
-
-      -- Simple and easy statusline.
-      --  You could remove this setup call if you don't like it,
-      --  and try some other statusline plugin
-      local statusline = require 'mini.statusline'
-      -- set use_icons to true if you have a Nerd Font
-      statusline.setup { use_icons = vim.g.have_nerd_font }
-
-      -- You can configure sections in the statusline by overriding their
-      -- default behavior. For example, here we set the section for
-      -- cursor location to LINE:COLUMN
-      ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_location = function()
-        return '%2l:%-2v'
-      end
-
+      --
+      -- -- Simple and easy statusline.
+      -- --  You could remove this setup call if you don't like it,
+      -- --  and try some other statusline plugin
+      -- local statusline = require 'mini.statusline'
+      -- -- set use_icons to true if you have a Nerd Font
+      -- statusline.setup { use_icons = vim.g.have_nerd_font }
+      --
+      -- -- You can configure sections in the statusline by overriding their
+      -- -- default behavior. For example, here we set the section for
+      -- -- cursor location to LINE:COLUMN
+      -- ---@diagnostic disable-next-line: duplicate-set-field
+      -- statusline.section_location = function()
+      --   return '%2l:%-2v'
+      -- end
+      --
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
@@ -524,26 +526,25 @@ require('lazy').setup({
   --
   require 'plugins.autopairs',
   require 'plugins.compiler',
+  require 'plugins.colorscheme.init',
+  require 'plugins.deadcolumn',
   require 'plugins.debug',
   require 'plugins.espeak',
   require 'plugins.fzf-lua',
-  require 'plugins.neo-tree',
-  -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  require 'plugins.guess-indent', -- Detect tabstop and shiftwidth automatically
-  require 'plugins.git.gitsigns', -- adds gitsigns recommend keymaps
+  require 'plugins.git.init', -- adds gitsigns recommend keymaps
+  require 'plugins.guess-indent',
   require 'plugins.hydra',
   require 'plugins.indent-line',
+  require 'plugins.jj.init',
   require 'plugins.lint',
+  require 'plugins.lualine',
   require 'plugins.overseer',
-  -- require 'plugins.smear-cursor',
+  -- require 'plugins.smear-cursor', -- it looks pretty but tends to have problems
   require 'plugins.undotree',
+  require 'plugins.mason.init',
   require 'plugins.marks',
+  require 'plugins.neo-tree', -- mabye move this later
   require 'plugins.statuscol',
-  require 'plugins.treesitter',
-
-  -- color schemes
-  require 'plugins.tokyonight',
-  require 'plugins.dracula',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
