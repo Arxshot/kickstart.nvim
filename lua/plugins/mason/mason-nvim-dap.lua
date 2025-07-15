@@ -1,5 +1,9 @@
 return {
   'jay-babu/mason-nvim-dap.nvim',
+  dependencies = {
+    'mason-org/mason.nvim',
+    'mfussenegger/nvim-dap',
+  },
   opts = {
     -- Makes a best effort to setup the various debuggers with
     -- reasonable debug configurations
