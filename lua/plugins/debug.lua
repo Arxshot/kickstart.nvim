@@ -75,9 +75,11 @@ M.config = function()
     vim.fn.sign_define(tp, { text = icon, texthl = hl, numhl = hl })
   end
 
-  dap.listeners.after.event_initialized['dapui_config'] = dapui.open
-  dap.listeners.before.event_terminated['dapui_config'] = dapui.close
-  dap.listeners.before.event_exited['dapui_config'] = dapui.close
+  dap.listeners.before.attach.dapui_config = dapui.open
+  dap.listeners.before.launch.dapui_config = dapui.open
+  dap.listeners.after.event_initialized.dapui_config = dapui.open
+  dap.listeners.before.event_terminated.dapui_config = dapui.close
+  dap.listeners.before.event_exited.dapui_config = dapui.close
 
   local Hydra = require 'hydra'
   M.debugger_hydra = Hydra {

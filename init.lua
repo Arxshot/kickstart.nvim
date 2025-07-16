@@ -122,7 +122,7 @@ end)
 
 -- Enable break indent
 vim.o.breakindent = true
-vim.opt.expandtab = false
+vim.opt.expandtab = true
 
 -- Save undo history
 vim.o.undofile = true
@@ -505,6 +505,8 @@ require('lazy').setup({
   require 'plugins.marks',
   require 'plugins.neo-tree', -- mabye move this later
   require 'plugins.statuscol',
+  require 'plugins.treesitter',
+  require 'plugins.treesitter-textobject',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
@@ -537,6 +539,8 @@ require('lazy').setup({
     },
   },
 })
+
+vim.cmd.colorscheme 'doom-one'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
