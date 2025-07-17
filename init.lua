@@ -124,6 +124,9 @@ end)
 vim.o.breakindent = true
 vim.opt.expandtab = true
 
+-- editorconfig
+vim.g.editorconfig = true
+
 -- Save undo history
 vim.o.undofile = true
 
@@ -539,8 +542,6 @@ require('lazy').setup({
     },
   },
 })
-
-vim.cmd.colorscheme 'doom-one'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
