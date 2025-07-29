@@ -14,9 +14,6 @@ local M = {
     -- Creates a beautiful debugger UI
     'rcarriga/nvim-dap-ui',
 
-    -- Required dependency for nvim-dap-ui
-    'nvim-neotest/nvim-nio',
-
     -- Installs the debug adapters for you
     'mason-org/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
@@ -40,28 +37,6 @@ M.keys = {
 M.config = function()
   local dap = require 'dap'
   local dapui = require 'dapui'
-
-  -- Dap UI setup
-  -- For more information, see |:help nvim-dap-ui|
-  dapui.setup {
-    -- Set icons to characters that are more likely to work in every terminal.
-    --    Feel free to remove or use ones that you like more! :)
-    --    Don't feel like these are good choices.
-    icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
-    controls = {
-      icons = {
-        pause = '⏸',
-        play = '▶',
-        step_into = '',
-        step_over = '',
-        step_out = '',
-        step_back = '',
-        run_last = '',
-        terminate = '⏹',
-        disconnect = '⏏',
-      },
-    },
-  }
 
   -- Change breakpoint icons
   vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
@@ -137,17 +112,9 @@ M.config = function()
       },
       -- other
       {
-        'a',
-        function()
-          require('dap').attach()
-        end,
-        { desc = 'Attach' },
-      },
-      {
         'p',
         function()
           require('dap').pause()
-          require('dap').attach()
         end,
         { desc = 'Pause' },
       },
@@ -161,23 +128,23 @@ M.config = function()
       {
         'B',
         function()
-          require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+          local condition = vim.fn.input 'Breakpoint condition: '
+          local hitCount = vim.fn.input 'Breakpoint hit count: '
+          local log = vim.fn.input 'Breakpoint log: '
+          require('dap').set_breakpoint(condition, hitCount, log)
         end,
         { desc = 'Set Breakpoint' },
       },
+      {
+        't',
+        function()
+          require('dapui').toggle()
+        end,
+        { desc = 'Toggle UI' },
+      },
       { '<esc>', nil, { exit = true, desc = 'Exit Hydra' } },
-      { 'q', nil, { exit = true, desc = 'Exit Hydra' } },
+      -- { 'q', nil, { exit = true, desc = 'Exit Hydra' } },
     },
-    hint = [[
- Debugging:
- [F5] Start/Continue
- [F1] Step Into
- [F2] Step Over
- [F3] Step Out
- [leader]b Toggle Breakpoint
- [leader]B Set Breakpoint
- [esc] Exit
-  ]],
   }
 end
 

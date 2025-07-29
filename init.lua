@@ -508,8 +508,7 @@ require('lazy').setup({
   require 'plugins.marks',
   require 'plugins.neo-tree', -- mabye move this later
   require 'plugins.statuscol',
-  require 'plugins.treesitter',
-  require 'plugins.treesitter-textobject',
+  require 'plugins.treesitter.init',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.

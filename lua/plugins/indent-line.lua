@@ -27,7 +27,20 @@ return { -- Add indentation guides even on blank lines
       vim.api.nvim_set_hl(0, 'RainbowCyan', { fg = '#6a8a8a' })
     end)
 
-    require('ibl').setup { indent = { highlight = highlight } }
+    require('ibl').setup {
+      indent = {
+        highlight = highlight,
+        char = '',
+      },
+      whitespace = {
+        highlight = {
+          'CursorColumn',
+          'Whitespace',
+        },
+        remove_blankline_trail = false,
+      },
+      scope = { enabled = false },
+    }
   end,
   opts = {},
 }
