@@ -1,5 +1,6 @@
 local M = {
   'nvimtools/hydra.nvim',
+  lazy = true,
 }
 
 M.keys = {
@@ -227,12 +228,12 @@ _<esc>_: exit
   M.window_hydra = hydra {
     name = 'Window Manager',
     hint = [[
- ^Split^       ^Move^   ^Resize^        ^Misc^              ^Mode^
- ^─────^       ^────^   ^──────^        ^────^              ^────^
- _v_: split    _h_: ←   _H_: resize ←   _x_: close win      _b_: buf mgr
- _s_: vsplit   _j_: ↓   _J_: resize ↓   _o_: close others   _t_: tab mgr
-             _k_: ↑   _K_: resize ↑
-             _l_: →   _L_: resize →
+ ^Split^          ^Move^   ^Resize^        ^Misc^              ^Mode^
+ ^─────^          ^────^   ^──────^        ^────^              ^────^
+ _v_: split       _h_: ←   _H_: resize ←   _x_: close win      _b_: buf mgr
+ _s_: vsplit      _j_: ↓   _J_: resize ↓   _o_: close others   _t_: tab mgr
+ _m_: MiniMap     _k_: ↑   _K_: resize ↑
+                _l_: →   _L_: resize →
 
 _<esc>_: exit
 ]],
@@ -254,6 +255,15 @@ _<esc>_: exit
       { 'L', '<C-w>>', { desc = 'Resize right' } },
       { 'K', '<C-w>+', { desc = 'Resize up' } },
       { 'J', '<C-w>-', { desc = 'Resize down' } },
+
+      {
+        'm',
+        function()
+          vim.cmd 'MinimapRefresh'
+          vim.cmd 'MinimapToggle'
+        end,
+        { desc = 'Toggle Mini-Map' },
+      },
 
       {
         'b',

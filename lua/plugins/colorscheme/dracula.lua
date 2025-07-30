@@ -1,6 +1,6 @@
 return {
   'Mofiqul/dracula.nvim',
-  priority = 999, -- Make sure to load this before all the other start plugins.
+  lazy = true,
   config = function()
     require('dracula').setup {
       -- customize dracula color palette

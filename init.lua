@@ -506,6 +506,7 @@ require('lazy').setup({
   require 'plugins.undotree',
   require 'plugins.mason.init',
   require 'plugins.marks',
+  require 'plugins.minimap',
   require 'plugins.neo-tree', -- mabye move this later
   require 'plugins.statuscol',
   require 'plugins.treesitter.init',
@@ -542,5 +543,6 @@ require('lazy').setup({
   },
 })
 
+vim.cmd 'colorscheme github_dark'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -1,5 +1,6 @@
 return {
   'nmac427/guess-indent.nvim',
+  lazy = true,
   event = { 'BufReadPre', 'BufNewFile' },
   opts = {
     auto_cmd = true, -- Set to false to disable automatic execution

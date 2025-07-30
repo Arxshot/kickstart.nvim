@@ -1,7 +1,6 @@
 return {
   'nickkadutskyi/jb.nvim',
-  lazy = false,
-  priority = 1000,
+  lazy = true,
   opts = {},
   config = function()
     require('jb').setup { transparent = true }

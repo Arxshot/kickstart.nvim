@@ -1,5 +1,6 @@
 local jiaoshijie = {
   'jiaoshijie/undotree',
+  lazy = true,
   dependencies = 'nvim-lua/plenary.nvim',
   cmd = { 'UndotreeToggle' },
   opts = {
@@ -39,6 +40,7 @@ local jiaoshijie = {
 
 local mbbill = {
   'mbbill/undotree',
+  lazy = true,
 
   cmd = { 'UndotreeToggle' },
   config = function()

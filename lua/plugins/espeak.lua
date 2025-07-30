@@ -1,7 +1,7 @@
 return {
   name = 'espeak',
   dir = vim.fn.stdpath 'config' .. '/lua/espeak',
-  lazy = false,
+  lazy = true,
   cmd = { 'EspeakStop', 'EspeakVisual' },
   keys = {
     {

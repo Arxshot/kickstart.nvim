@@ -1,5 +1,6 @@
 return {
   'Zeioth/compiler.nvim',
+  lazy = true,
 
   cmd = { 'CompilerOpen', 'CompilerToggleResults', 'CompilerRedo' },
 
