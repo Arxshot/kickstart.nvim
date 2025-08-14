@@ -105,12 +105,12 @@ vim.o.number = true
 vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.o.mouse = 'a'
+vim.o.mouse = ''
 
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
 
-vim.o.colorcolumn = '80'
+vim.o.colorcolumn = '100'
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
@@ -508,6 +508,7 @@ require('lazy').setup({
   require 'plugins.marks',
   require 'plugins.minimap',
   require 'plugins.neo-tree', -- mabye move this later
+  require 'plugins.omni-preview',
   require 'plugins.statuscol',
   require 'plugins.treesitter.init',
 

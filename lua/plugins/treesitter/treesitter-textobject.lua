@@ -2,6 +2,37 @@ return {
   'nvim-treesitter/nvim-treesitter-textobjects',
 
   dependencies = { 'nvim-treesitter/nvim-treesitter' },
+
+  keys = {
+    { '<c-space>', desc = 'Increment Selection' },
+
+    -- select
+    { 'af', desc = '@function.outer' },
+    { 'if', desc = '@function.inner' },
+    { 'ac', desc = '@class.outer' },
+    { 'ic', desc = 'Select inner part of a class region' },
+    { 'as', desc = 'Select language scope' },
+
+    -- swap
+    { '<leader>a', desc = 'Swap next parameter' },
+    { '<leader>A', desc = 'Swap previous parameter' },
+
+    -- move
+    { ']m', desc = '@function.outer' },
+    { ']]', desc = 'Next class start' },
+    { ']o', desc = '@loop.*' },
+    { ']s', desc = 'Next scope' },
+    { ']z', desc = 'Next fold' },
+    { ']M', desc = '@function.outer (end)' },
+    { '][', desc = '@class.outer (end)' },
+    { '[m', desc = '@function.outer (prev start)' },
+    { '[[', desc = '@class.outer (prev start)' },
+    { '[M', desc = '@function.outer (prev end)' },
+    { '[]', desc = '@class.outer (prev end)' },
+    { ']d', desc = '@conditional.outer' },
+    { '[d', desc = '@conditional.outer (prev)' },
+  },
+
   opts = {
     textobjects = {
       select = {

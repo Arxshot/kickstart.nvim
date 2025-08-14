@@ -2,6 +2,12 @@ return { -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
   main = 'nvim-treesitter.configs', -- Sets main module to use for opts
+  event = { 'BufEnter', 'VeryLazy' },
+  cmd = { 'TSUpdateSync', 'TSUpdate', 'TSInstall' },
+  keys = {
+    { '<c-space>', desc = 'Increment Selection' },
+    { '<bs>', desc = 'Decrement Selection', mode = 'x' },
+  },
   -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
   opts = {
     -- ensure_installed = {
