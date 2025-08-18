@@ -225,6 +225,27 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Auto read and write
+vim.opt.autoread = true
+
+-- Reload on buffer enter
+vim.api.nvim_create_augroup('autoread_bufenter', { clear = true })
+vim.api.nvim_create_autocmd('BufEnter', {
+  group = 'autoread_bufenter',
+  command = 'checktime',
+})
+
+-- Autosave only "real" files
+vim.api.nvim_create_augroup('autosave_on_leave', { clear = true })
+vim.api.nvim_create_autocmd({ 'FocusLost', 'WinLeave' }, {
+  group = 'autosave_on_leave',
+  callback = function()
+    if vim.bo.modifiable and vim.bo.buftype == '' and not vim.bo.readonly then
+      vim.cmd 'silent! noautocmd w'
+    end
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -510,6 +531,7 @@ require('lazy').setup({
   require 'plugins.neo-tree', -- mabye move this later
   require 'plugins.omni-preview',
   require 'plugins.statuscol',
+  require 'plugins.terminal.init',
   require 'plugins.treesitter.init',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
