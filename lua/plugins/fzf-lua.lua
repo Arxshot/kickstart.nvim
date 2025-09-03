@@ -22,7 +22,7 @@ return {
     { '<leader>sC', '<cmd>FzfLua commands<cr>', desc = '[S]earch [C]ommands' },
     { '<leader>sd', '<cmd>FzfLua diagnostics_document<cr>', desc = '[S]earch Document [D]iagnostics' },
     { '<leader>sD', '<cmd>FzfLua diagnostics_workspace<cr>', desc = '[S]earch Workspace [D]iagnostics' },
-    { '<leader>sf', '<cmd>FzfLua files<cr>', desc = '[S]earch Workspace [D]iagnostics' },
+    { '<leader>sf', '<cmd>FzfLua files<cr>', desc = '[S]earch [F]iles' },
     { '<leader>sg', '<cmd>FzfLua live_grep_native<cr>', desc = '[S]earch by [G]rep' },
     { '<leader>sG', '<cmd>FzfLua live_grep_native<cr>', desc = '[S]earch [G]lobal Grep' },
     { '<leader>sh', '<cmd>FzfLua highlights<cr>', desc = '[S]earch [H]ighlight Groups' },
@@ -45,6 +45,7 @@ return {
       'fzf-native',
       'hide',
     }
+    require('fzf-lua').register_ui_select()
   end,
   opts = {},
 }
