@@ -24,11 +24,12 @@ return { -- Autoformat
       if disable_filetypes[vim.bo[bufnr].filetype] then
         return nil
       else
-        return {
-          timeout_ms = 500,
-          lsp_format = 'fallback',
-        }
+        -- return {
+        --   timeout_ms = 500,
+        --   lsp_format = 'fallback',
+        -- }
       end
+      return nil
     end,
     formatters_by_ft = {
       lua = { 'stylua' },

@@ -179,6 +179,9 @@ vim.o.confirm = true
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+--- Write File
+vim.keymap.set('n', 'ZW', '<cmd>w<CR>')
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -236,15 +239,18 @@ vim.api.nvim_create_autocmd('BufEnter', {
 })
 
 -- Autosave only "real" files
-vim.api.nvim_create_augroup('autosave_on_leave', { clear = true })
-vim.api.nvim_create_autocmd({ 'FocusLost', 'WinLeave' }, {
-  group = 'autosave_on_leave',
-  callback = function()
-    if vim.bo.modifiable and vim.bo.buftype == '' and not vim.bo.readonly then
-      vim.cmd 'silent! noautocmd w'
-    end
-  end,
-})
+local autosave = false
+if autosave then
+  vim.api.nvim_create_augroup('autosave_on_leave', { clear = true })
+  vim.api.nvim_create_autocmd({ 'FocusLost', 'WinLeave' }, {
+    group = 'autosave_on_leave',
+    callback = function()
+      if vim.bo.modifiable and vim.bo.buftype == '' and not vim.bo.readonly then
+        vim.cmd 'silent! noautocmd w'
+      end
+    end,
+  })
+end
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -513,11 +519,14 @@ require('lazy').setup({
   require 'plugins.conform',
   require 'plugins.deadcolumn',
   require 'plugins.debug',
+  require 'plugins.difftastic',
+  -- require 'plugins.diffview',
   require 'plugins.espeak',
   require 'plugins.fzf-lua',
   require 'plugins.git.init', -- adds gitsigns recommend keymaps
   require 'plugins.guess-indent',
   require 'plugins.hydra',
+  require 'plugins.hover',
   require 'plugins.indent-line',
   require 'plugins.jj.init',
   require 'plugins.lint',
@@ -567,6 +576,7 @@ require('lazy').setup({
 })
 
 -- vim.cmd 'colorscheme github_dark'
-vim.cmd.colorscheme 'tokyonight-storm'
+-- vim.cmd.colorscheme 'tokyonight-storm'
+vim.cmd.colorscheme 'dracula-soft'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
