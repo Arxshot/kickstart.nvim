@@ -29,6 +29,8 @@ return {
     { '<leader>sj', '<cmd>FzfLua jumps<cr>', desc = '[S]earch [J]umplist' },
     { '<leader>sk', '<cmd>FzfLua keymaps<cr>', desc = '[S]earch [K]ey Maps' },
     { '<leader>sm', '<cmd>FzfLua marks<cr>', desc = '[S]earch Jump to [M]ark' },
+    { '<leader>so', '<cmd>FzfLua colorschemes<cr>', desc = '[S]earch C[o]lor Schemes' },
+    { '<leader>sO', '<cmd>FzfLua awesome_colorschemes<cr>', desc = '[S]earch C[O]lor Schemes' },
     { '<leader>sq', '<cmd>FzfLua lgrep_quickfix	<cr>', desc = '[S]earch [Q]uickfix' },
     { '<leader>ss', '<cmd>FzfLua spell_suggest<cr>', desc = '[S]earch [S]pell Suggest' },
     { '<leader>sS', '<cmd>FzfLua spellcheck<cr>', desc = '[S]earch [S]pellCheck' },
@@ -44,6 +46,24 @@ return {
     require('fzf-lua').setup {
       'fzf-native',
       'hide',
+
+      fzf_colors = {
+        true, -- inherit fzf colors that aren't specified below from
+        -- the auto-generated theme similar to `fzf_colors=true`
+        ['fg'] = { 'fg', 'CursorLine' },
+        ['bg'] = { 'bg', 'Normal' },
+        ['hl'] = { 'fg', 'Comment' },
+        ['fg+'] = { 'fg', 'Normal', 'underline' },
+        ['bg+'] = { 'bg', { 'CursorLine', 'Normal' } },
+        ['hl+'] = { 'fg', 'Statement' },
+        ['info'] = { 'fg', 'PreProc' },
+        ['prompt'] = { 'fg', 'Conditional' },
+        ['pointer'] = { 'fg', 'Exception' },
+        ['marker'] = { 'fg', 'Keyword' },
+        ['spinner'] = { 'fg', 'Label' },
+        ['header'] = { 'fg', 'Comment' },
+        ['gutter'] = '-1',
+      },
     }
     require('fzf-lua').register_ui_select()
   end,

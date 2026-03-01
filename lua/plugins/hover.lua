@@ -3,7 +3,7 @@ return {
   lazy = true,
   keys = {
     {
-      'K',
+      'gk',
       function()
         require('hover').open()
       end,

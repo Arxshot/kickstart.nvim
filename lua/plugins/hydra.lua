@@ -5,7 +5,7 @@ local M = {
 
 M.keys = {
   {
-    '<leader>b',
+    '<C-b>',
     function()
       M.buffer_hydra:activate()
     end,
@@ -13,21 +13,21 @@ M.keys = {
     mode = 'n',
   },
   {
-    '<leader>w',
+    '<C-w>',
     function()
       M.window_hydra:activate()
     end,
     desc = '[W]indow Manager',
     mode = 'n',
   },
-  {
-    '<leader>t',
-    function()
-      M.tab_hydra:activate()
-    end,
-    desc = '[T]ab Manager',
-    mode = 'n',
-  },
+  -- {
+  --   '<leader>t',
+  --   function()
+  --     M.tab_hydra:activate()
+  --   end,
+  --   desc = '[T]ab Manager',
+  --   mode = 'n',
+  -- },
 }
 
 function M.config()

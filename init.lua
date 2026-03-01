@@ -366,7 +366,10 @@ require('lazy').setup({
 
   { -- Autocompletion
     'saghen/blink.cmp',
-    event = 'VimEnter',
+    event = {
+      -- 'VimEnter',
+      'VeryLazy',
+    },
     version = '1.*',
     dependencies = {
       -- Snippet Engine
@@ -577,6 +580,7 @@ require('lazy').setup({
 
 -- vim.cmd 'colorscheme github_dark'
 -- vim.cmd.colorscheme 'tokyonight-storm'
-vim.cmd.colorscheme 'dracula-soft'
+-- vim.cmd.colorscheme 'dracula-soft'
+vim.cmd.colorscheme 'everforest'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

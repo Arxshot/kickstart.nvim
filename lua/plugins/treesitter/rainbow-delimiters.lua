@@ -2,7 +2,7 @@ return {
   'HiPhish/rainbow-delimiters.nvim',
 
   dependencies = { 'nvim-treesitter/nvim-treesitter' },
-  event = { 'BufEnter' },
+  event = { 'BufEnter', 'VeryLazy' },
   opts = {
     strategy = {
       [''] = 'rainbow-delimiters.strategy.global',
