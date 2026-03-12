@@ -9,6 +9,7 @@ return { -- Autoformat
       function()
         require('conform').format { async = true, lsp_format = 'fallback' }
         vim.cmd 'GuessIndent'
+        require("conform").format()
       end,
       mode = '',
       desc = '[F]ormat buffer',
