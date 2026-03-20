@@ -123,6 +123,8 @@ end)
 -- Enable break indent
 vim.o.breakindent = true
 vim.opt.expandtab = true
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 
 -- editorconfig
 vim.g.editorconfig = true
@@ -173,7 +175,7 @@ vim.o.scrolloff = 10
 vim.o.confirm = true
 
 -- makes the jump list can like a stack
-vim.o.jumpoptions = 'stack'
+vim.o.jumpoptions = 'stack,view'
 
 -- clear jump list on enter
 vim.api.nvim_create_autocmd("VimEnter", {

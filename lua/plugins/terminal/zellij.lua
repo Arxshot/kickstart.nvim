@@ -1,3 +1,17 @@
+local function in_zellij()
+  return vim.env.ZELLIJ ~= nil
+end
+
+local function map_nav(z_cmd, nvim_cmd)
+  return function()
+    if in_zellij() then
+      vim.cmd(z_cmd)
+    else
+      vim.cmd(nvim_cmd)
+    end
+  end
+end
+
 return {
   'https://github.com/fresh2dev/zellij.vim',
   -- Pin version to avoid breaking changes.
@@ -16,58 +30,64 @@ return {
   },
   keys = {
     {
-      '<A-h>',
-      '<cmd>ZellijNavigateLeft<cr>',
-      mode = { 'n', 't' },
-      desc = '[Z]ellij Navigate Left',
+      "<A-h>",
+      map_nav("ZellijNavigateLeft", "wincmd h"),
+      mode = { "n", "t" },
+      desc = "Navigate Left",
     },
     {
-      '<A-j>',
-      '<cmd>ZellijNavigateDown<cr>',
-      mode = { 'n', 't' },
-      desc = '[Z]ellij Navigate Down',
+      "<A-j>",
+      map_nav("ZellijNavigateDown", "wincmd j"),
+      mode = { "n", "t" },
+      desc = "Navigate Down",
     },
     {
-      '<A-k>',
-      '<cmd>ZellijNavigateUp<cr>',
-      mode = { 'n', 't' },
-      desc = '[Z]ellij Navigate Up',
+      "<A-k>",
+      map_nav("ZellijNavigateUp", "wincmd k"),
+      mode = { "n", "t" },
+      desc = "Navigate Up",
     },
     {
-      '<A-l>',
-      '<cmd>ZellijNavigateRight<cr>',
-      mode = { 'n', 't' },
-      desc = '[Z]ellij Navigate Right',
+      "<A-l>",
+      map_nav("ZellijNavigateRight", "wincmd l"),
+      mode = { "n", "t" },
+      desc = "Navigate Right",
     },
 
+    -- Only meaningful in Zellij → guard them
     {
-      '<leader>zt',
-      '<cmd>ZellijNewTab<cr>',
-      mode = { 'n', 't' },
-      desc = '[Z]ellij New [T]ab',
+      "<leader>zt",
+      function()
+        if in_zellij() then vim.cmd("ZellijNewTab") end
+      end,
+      desc = "[Z]ellij New Tab",
     },
     {
-      '<leader>zf',
-      '<cmd>ZellijNewPane<cr>',
-      mode = { 'n', 't' },
-      desc = '[Z]ellij New [F]loating Pane',
+      "<leader>zf",
+      function()
+        if in_zellij() then vim.cmd("ZellijNewPane") end
+      end,
+      desc = "[Z]ellij Floating Pane",
     },
     {
-      '<leader>zs',
-      '<cmd>ZellijNewPaneSplit<cr>',
-      mode = { 'n', 't' },
-      desc = '[Z]ellij [S]plit Pane',
+      "<leader>zs",
+      function()
+        if in_zellij() then vim.cmd("ZellijNewPaneSplit") end
+      end,
+      desc = "[Z]ellij Split Pane",
     },
     {
-      '<leader>zv',
-      '<cmd>ZellijNewPaneVSplit<cr>',
-      mode = { 'n', 't' },
-      desc = '[Z]ellij [V]Split Pane',
+      "<leader>zv",
+      function()
+        if in_zellij() then vim.cmd("ZellijNewPaneVSplit") end
+      end,
+      desc = "[Z]ellij VSplit Pane",
     },
   },
   init = function()
     -- Options:
     -- vim.g.zelli_navigator_move_focus_or_tab = 1
     vim.g.zellij_navigator_no_default_mappings = 1
+
   end,
 }

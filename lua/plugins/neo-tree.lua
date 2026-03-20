@@ -13,7 +13,7 @@ return {
     },
     lazy = false,
     keys = {
-      { '\\', '<cmd>Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+      { '\\', '<cmd>Neotree last focus<CR>', desc = 'NeoTree Reveal', silent = true },
     },
     opts = {
       filesystem = {
@@ -21,11 +21,6 @@ return {
           visible = true,
           hide_dotfiles = false,
           hide_gitignored = false,
-        },
-        window = {
-          mappings = {
-            ['\\'] = 'close_window',
-          },
         },
       },
       source_selector = {
@@ -38,22 +33,27 @@ return {
           { source = 'document_symbols' },
         },
       },
+      window = {
+        mappings = {
+          ['\\'] = 'close_window',
+        },
+      },
       sources = { 'filesystem', 'buffers', 'git_status', 'document_symbols', 'jj' },
     },
     config = function(_, opts)
       -- Conditionally modify source selector to replace git with jj
-      -- local jj_utils = require 'neo-tree.sources.jj.utils'
-      -- if jj_utils.get_repository_root() then
-      --   table.insert(opts.source_selector.sources, {
-      --     display_name = '󰊢 JJ',
-      --     source = 'jj',
-      --   })
-      -- elseif vim.fn.isdirectory '.git' ~= 0 then
-      --   table.insert(opts.source_selector.sources, {
-      --     display_name = '󰊢 Git',
-      --     source = 'git_status',
-      --   })
-      -- end
+      local jj_utils = require 'neo-tree.sources.jj.utils'
+      if jj_utils.get_repository_root() then
+        table.insert(opts.source_selector.sources, {
+          display_name = '󰊢 JJ',
+          source = 'jj',
+        })
+      elseif vim.fn.isdirectory '.git' ~= 0 then
+        table.insert(opts.source_selector.sources, {
+          display_name = '󰊢 Git',
+          source = 'git_status',
+        })
+      end
 
       require('neo-tree').setup(opts)
     end,
