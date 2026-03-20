@@ -175,6 +175,13 @@ vim.o.confirm = true
 -- makes the jump list can like a stack
 vim.o.jumpoptions = 'stack'
 
+-- clear jump list on enter
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    vim.cmd("clearjumps")
+  end,
+})
+
 -- [[ Basic Keymaps ]]
 -- See `:help vim.keymap.set()`
 
