@@ -172,6 +172,9 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+-- makes the jump list can like a stack
+vim.o.jumpoptions = 'stack'
+
 -- [[ Basic Keymaps ]]
 -- See `:help vim.keymap.set()`
 

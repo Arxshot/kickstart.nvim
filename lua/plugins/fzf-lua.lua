@@ -40,6 +40,7 @@ return {
     { '<leader>sr', '<cmd>FzfLua resume<cr>', desc = '[S]earch [R]esume' },
     { '<leader>sR', '<cmd>FzfLua oldfiles<cr>', desc = '[S]earch [R]ecet' },
     { '<leader>sv', '<cmd>FzfLua grep_visual<cr>', desc = '[S]earch [V]isual' },
+    { '<leader>s', '<cmd>FzfLua grep_visual<cr>', desc = '[S]earch Visual', mode = { 'v' }},
     { '<leader>sz', '<cmd>FzfLua zoxide<cr>', desc = '[S]earch [Z]oxide' },
     -- [[jump]]
   },
