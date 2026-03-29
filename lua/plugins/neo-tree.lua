@@ -13,7 +13,7 @@ return {
     },
     lazy = false,
     keys = {
-      { '\\', '<cmd>Neotree last focus<CR>', desc = 'NeoTree Reveal', silent = true },
+      { '\\', '<cmd>Neotree source=last reveal<CR>', desc = 'NeoTree Reveal', silent = true },
     },
     opts = {
       filesystem = {
