@@ -56,11 +56,27 @@ return {
         map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
         map('n', '<leader>tD', gitsigns.preview_hunk_inline, { desc = '[T]oggle git show [D]eleted' })
 
+        map('n', '<leader>hc', function()
+          if vim.fn.executable 'jj' == 1 then
+            local output = vim.fn.system 'jj --ignore-working-copy workspace root'
+            if vim.v.shell_error == 0 then
+              local output = vim.fn.systemlist 'jj --ignore-working-copy log --no-graph  -T \'commit_id ++ "\\n"\' -r @-'
+              if vim.v.shell_error == 0 then
+                vim.ui.select(output, {
+                  prompt = 'Pick one:',
+                }, function(choice)
+                  gitsigns.change_base(choice)
+                end)
+              end
+            end
+          end
+        end, { desc = 'git [C]hange base' })
+
         if vim.fn.executable 'jj' == 1 then
           local output = vim.fn.system 'jj --ignore-working-copy workspace root'
           if vim.v.shell_error == 0 then
             local output = vim.fn.systemlist 'jj --ignore-working-copy log --no-graph  -T \'commit_id ++ "\\n"\' -r @-'
-            if vim.v.shell_error == 0 then
+            if #output > 0 then
               gitsigns.change_base(output[1])
             end
           end
