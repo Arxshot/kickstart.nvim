@@ -22,6 +22,33 @@ return {
           hide_dotfiles = false,
           hide_gitignored = false,
         },
+        follow_current_file = {
+          enabled = true, -- This will find and focus the file in the active buffer every time
+                          -- the current file is changed while the tree is open.
+          leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+        },
+      },
+      buffers = {
+        follow_current_file = {
+          enabled = true, -- This will find and focus the file in the active buffer every time
+                          -- the current file is changed while the tree is open.
+          leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+        },
+        show_unloaded = true,
+      },
+      git_status = {
+        follow_current_file = {
+          enabled = true, -- This will find and focus the file in the active buffer every time
+                          -- the current file is changed while the tree is open.
+          leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+        },
+      },
+      jj = {
+        follow_current_file = {
+          enabled = true, -- This will find and focus the file in the active buffer every time
+                          -- the current file is changed while the tree is open.
+          leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+        },
       },
       source_selector = {
         winbar = true,
@@ -38,7 +65,7 @@ return {
           ['\\'] = 'close_window',
         },
       },
-      sources = { 'filesystem', 'buffers', 'git_status', 'document_symbols', 'jj' },
+      sources = { 'filesystem', 'buffers', 'git_status', 'jj', 'document_symbols' },
     },
     config = function(_, opts)
       -- Conditionally modify source selector to replace git with jj
