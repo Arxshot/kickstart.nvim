@@ -1,7 +1,7 @@
 return {
   'Bekaboo/deadcolumn.nvim',
   lazy = true,
-  event = { 'BufEnter' },
+  event = { 'VeryLazy' },
   opts = {
     scope = 'line', ---@type string|fun(): integer
     ---@type string[]|boolean|fun(mode: string): boolean

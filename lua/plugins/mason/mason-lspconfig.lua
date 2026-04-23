@@ -1,5 +1,6 @@
 return {
   'mason-org/mason-lspconfig.nvim',
+  lazy = true,
   event = { 'VeryLazy' },
   dependencies = {
     'saghen/blink.cmp',
@@ -86,8 +87,8 @@ return {
     local ensure_installed = vim.tbl_keys(servers or {})
 
     require('mason-lspconfig').setup {
-      ensure_installed = ensure_installed, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-      automatic_installation = false,
+      -- ensure_installed = ensure_installed, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+      automatic_installation = true,
       automatic_enable = true,
       handlers = {
         function(server_name)

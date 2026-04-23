@@ -1,11 +1,9 @@
 return {
   'Arxshot/smear-cursor.nvim',
   branch = 'patch-1',
-
-  lazy = false,
-
+  lazy = true,
+  event = { 'VeryLazy' },
   config = true,
-
   keys = { -- load the plugin only when using it's keybinding:
     {
       '<leader>tc',
@@ -27,7 +25,6 @@ return {
       desc = '[T]oggle Smear [C]ursor',
     },
   },
-
   opts = {
     -- Only smear cursor when moving at least these distances
     min_horizontal_distance_smear = 2,

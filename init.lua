@@ -90,6 +90,21 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- use neotree
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function(data)
+    local is_dir = vim.fn.isdirectory(data.file) == 1
+    if is_dir then
+      vim.cmd.cd(data.file)
+      require("neo-tree.command").execute({ action = "show", dir = data.file })
+    end
+  end,
+})
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
@@ -167,7 +182,7 @@ vim.o.inccommand = 'split'
 vim.o.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 10
+vim.o.scrolloff = 7
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
@@ -388,6 +403,8 @@ require('lazy').setup({
       {
         'L3MON4D3/LuaSnip',
         version = '2.*',
+        lazy = true;
+        event = "InsertEnter",
         build = (function()
           -- Build Step is needed for regex support in snippets.
           -- This step is not supported in many windows environments.
@@ -478,9 +495,6 @@ require('lazy').setup({
     },
   },
 
-  -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     config = function()
@@ -532,7 +546,6 @@ require('lazy').setup({
   require 'plugins.compiler',
   require 'plugins.colorscheme.init',
   require 'plugins.conform',
-  require 'plugins.deadcolumn',
   require 'plugins.debug',
   require 'plugins.difftastic',
   -- require 'plugins.diffview',
@@ -544,19 +557,20 @@ require('lazy').setup({
   require 'plugins.hover',
   require 'plugins.indent-line',
   require 'plugins.jj.init',
+  require 'plugins.leap',
   require 'plugins.lint',
-  require 'plugins.lualine',
   require 'plugins.overseer',
-  -- require 'plugins.smear-cursor', -- it looks pretty but tends to have problems
   require 'plugins.undotree',
   require 'plugins.mason.init',
   require 'plugins.marks',
   require 'plugins.minimap',
   require 'plugins.neo-tree', -- mabye move this later
   require 'plugins.omni-preview',
+  require 'plugins.pretty.init',
   require 'plugins.statuscol',
   require 'plugins.terminal.init',
   require 'plugins.treesitter.init',
+  require 'plugins.vim-repeat',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
