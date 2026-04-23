@@ -566,6 +566,7 @@ require('lazy').setup({
   require 'plugins.minimap',
   require 'plugins.neo-tree', -- mabye move this later
   require 'plugins.omni-preview',
+  require 'plugins.oil',
   require 'plugins.pretty.init',
   require 'plugins.statuscol',
   require 'plugins.terminal.init',
